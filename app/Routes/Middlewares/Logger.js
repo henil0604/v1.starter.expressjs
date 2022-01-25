@@ -16,6 +16,14 @@ module.exports = class Logger$Middleware extends RouteNode {
         }
     }
 
+    get Path() {
+        return null;
+    }
+
+    get Base(){
+        return null;
+    }
+
     get Type() {
         return 'middleware';
     }
