@@ -8,6 +8,10 @@ const App = require("@/Index");
 
 globalThis.App = App;
 
+log("Setting up MongoDb");
+const InitializeMongoDb = require("@Modules/InitializeMongoDb");
+InitializeMongoDb();
+
 log("Setting Up Routes");
 
 const InitializeRouteNodes = require("@Modules/InitializeRouteNodes.js");
