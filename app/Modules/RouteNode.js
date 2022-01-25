@@ -42,6 +42,8 @@ class RouteNode {
             }
 
             Methods.forEach(method => {
+                method = method.toLowerCase();
+
                 let MethodFunction = Route[method]
 
                 MethodFunction.call(Route, this.Handler)
