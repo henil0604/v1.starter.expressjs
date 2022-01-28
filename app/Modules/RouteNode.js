@@ -1,7 +1,7 @@
 const urlJoin = require("proper-url-join").default;
 const JOI = require("joi");
 const Express = require("express");
-
+const Response = require("@Modules/Response");
 
 const ValidateConfig = (Config = {}) => {
     const ConfigSchema = JOI.object({
@@ -22,6 +22,7 @@ class RouteNode {
 
     constructor(Config) {
 
+        this.Response = Response;
         this.Config = ValidateConfig(Config);
 
         if (this.Config.autoCreate) {
@@ -46,7 +47,7 @@ class RouteNode {
 
                 let MethodFunction = Route[method]
 
-                MethodFunction.call(Route, this.Handler)
+                MethodFunction.call(Route, this._Handler)
             });
 
         }
@@ -57,11 +58,30 @@ class RouteNode {
 
         if (this.Type === "middleware") {
             if (this.FullPath === null) {
-                App.use(this.Handler);
+                App.use(this._Handler);
             } else {
-                App.use(this.FullPath, this.Handler);
+                App.use(this.FullPath, this._Handler);
             }
         }
+    }
+
+    get _Handler() {
+        const Handler = this.Handler;
+
+        const _Handler = async (req, res, next) => {
+            try {
+                await Handler(req, res, next);
+            } catch (error) {
+                if (error instanceof Response) {
+                    res.send(error.data);
+                } else {
+                    throw error;
+                }
+
+            }
+        }
+
+        return _Handler;
     }
 
     get Handler() {
@@ -97,7 +117,6 @@ class RouteNode {
     get StaticPath() {
         return null;
     }
-
 
 }
 

@@ -10,7 +10,12 @@ module.exports = class Root extends RouteNode {
 
     get Handler() {
         return (req, res, next) => {
-            res.send('Hello World!');
+
+            throw new this.Response({
+                status: 200,
+                message: "Hello World!"
+            });
+
         }
     }
 
