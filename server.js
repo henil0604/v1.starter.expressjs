@@ -1,5 +1,5 @@
 require("@Modules/LoadGlobals")
-globalThis.$ROOT = __dirname;
+globalThis.$ROOT = require("app-root-path").resolve("../");
 
 log(`--{${Config.App.name}}--`)
 
