@@ -20,6 +20,7 @@
     "@helper-modules/log": "^1.0.0",
     "@helper-modules/random": "^1.0.0",
     "@helper-modules/sleep": "^1.0.0",
+    "app-root-path": "^3.0.0",
     "express": "^4.17.2",
     "joi": "^17.5.0",
     "mongoose": "^6.1.8",
