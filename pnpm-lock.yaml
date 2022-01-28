@@ -5,6 +5,7 @@ specifiers:
   '@helper-modules/log': ^1.0.0
   '@helper-modules/random': ^1.0.0
   '@helper-modules/sleep': ^1.0.0
+  app-root-path: ^3.0.0
   express: ^4.17.2
   joi: ^17.5.0
   mongoose: ^6.1.8
@@ -17,6 +18,7 @@ dependencies:
   '@helper-modules/log': registry.npmjs.org/@helper-modules/log/1.0.0
   '@helper-modules/random': registry.npmjs.org/@helper-modules/random/1.0.0
   '@helper-modules/sleep': registry.npmjs.org/@helper-modules/sleep/1.0.0
+  app-root-path: registry.npmjs.org/app-root-path/3.0.0
   express: registry.npmjs.org/express/4.17.2
   joi: registry.npmjs.org/joi/17.5.0
   mongoose: registry.npmjs.org/mongoose/6.1.8
@@ -402,6 +404,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       color-convert: registry.npmjs.org/color-convert/2.0.1
+    dev: false
+
+  registry.npmjs.org/app-root-path/3.0.0:
+    resolution: {integrity: sha512-qMcx+Gy2UZynHjOHOIXPNvpf+9cjvk3cWrBBK7zg4gH9+clobJRb9NGzcT7mQTcV/6Gm/1WelUtqxVXnNlrwcw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/app-root-path/-/app-root-path-3.0.0.tgz}
+    name: app-root-path
+    version: 3.0.0
+    engines: {node: '>= 6.0.0'}
     dev: false
 
   registry.npmjs.org/array-flatten/1.1.1:

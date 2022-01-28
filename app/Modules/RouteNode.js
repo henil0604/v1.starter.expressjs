@@ -30,7 +30,7 @@ class RouteNode {
     }
 
     create() {
-        log(`Creating {${this.Path || "*"}} [{${this.Type}}]`, "log", "[RouteNode]");
+        log(`Creating {${this.FullPath || "*"}} [{${this.Type}}]`, "log", "[RouteNode]");
 
         if (this.Type === "route") {
             const Route = App.route(this.FullPath);
