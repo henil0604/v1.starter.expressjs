@@ -1360,6 +1360,13 @@
  */
 
 /*!
+ * cookie-parser
+ * Copyright(c) 2014 TJ Holowaychuk
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+/*!
  * define methods
  */
 
@@ -1496,6 +1503,11 @@
 
 /*!
  * inherit mquery
+ */
+
+/*!
+ * is.js 0.8.0
+ * Author: Aras Atasaygin
  */
 
 /*!
