@@ -9,7 +9,7 @@ module.exports = class PostRequest$Middleware extends RouteNode {
 
     get Handler() {
         return (req, res, next) => {
-            if (response.writableEnded) {
+            if (res.writable === false) {
                 return;
             }
 
