@@ -21,9 +21,12 @@
     "@helper-modules/random": "^1.0.0",
     "@helper-modules/sleep": "^1.0.0",
     "app-root-path": "^3.0.0",
+    "biri": "^0.4.0",
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.2",
     "joi": "^17.5.0",
     "mongoose": "^6.1.8",
-    "proper-url-join": "^2.1.1"
+    "proper-url-join": "^2.1.1",
+    "request-ip": "^2.1.3"
   }
 }
