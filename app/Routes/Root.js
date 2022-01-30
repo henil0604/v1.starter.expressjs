@@ -10,11 +10,16 @@ module.exports = class Root extends RouteNode {
 
     get Handler() {
         return (req, res, next) => {
+            req.Response = new this.Response();
 
-            throw new this.Response({
+            req.Response.setData({
                 status: 200,
                 message: "Hello World!"
-            });
+            })
+
+            req.Response.setStatusCode(200);
+
+            throw req.Response;
 
         }
     }
