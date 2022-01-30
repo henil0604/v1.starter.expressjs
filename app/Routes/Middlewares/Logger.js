@@ -10,7 +10,8 @@ module.exports = class Logger$Middleware extends RouteNode {
 
     get Handler() {
         return (req, res, next) => {
-            log(`${req.method} {${req.originalUrl}}`, "log", '[ROUTE]')
+
+            log(`${req.method} {${req.originalUrl}}`, "log", "[LOGGER]")
 
             next();
         }
@@ -20,7 +21,7 @@ module.exports = class Logger$Middleware extends RouteNode {
         return null;
     }
 
-    get Base(){
+    get Base() {
         return null;
     }
 
