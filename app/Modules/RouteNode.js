@@ -47,7 +47,7 @@ class RouteNode {
 
                 let MethodFunction = Route[method]
 
-                MethodFunction.call(Route, this._Handler)
+                MethodFunction.call(Route, ...this._Handler)
             });
 
         }
@@ -58,30 +58,61 @@ class RouteNode {
 
         if (this.Type === "middleware") {
             if (this.FullPath === null) {
-                App.use(this._Handler);
+                App.use.call(App, ...this._Handler);
             } else {
-                App.use(this.FullPath, this._Handler);
+                App.use.call(App, this.FullPath, ...this._Handler);
             }
         }
+
     }
 
+
     get _Handler() {
+        // Getting Handler
         const Handler = this.Handler;
+        // Initialize _HANDLERS
+        let _HANDLERS = [];
 
-        const _Handler = async (req, res, next) => {
-            try {
-                await Handler(req, res, next);
-            } catch (error) {
-                if (error instanceof Response) {
-                    res.send(error.data);
-                } else {
-                    throw error;
+        // is Handler Array
+        const isHandlerArray = Array.isArray(Handler);
+
+        // Enhancer
+        const EnhanceHandler = (Handler) => {
+            return async (req, res, next) => {
+
+                req.RouteNode = this;
+
+                try {
+                    await Handler(req, res, next);
+                } catch (error) {
+                    if (error instanceof Response) {
+                        res.statusCode = error.statusCode;
+                        res.send(error.data);
+                        res.end();
+                    } else {
+                        throw error;
+                    }
+
                 }
-
             }
         }
 
-        return _Handler;
+        // if handler is function
+        if (isHandlerArray === false) {
+            // enchance handler and push to _HANDLERS
+            _HANDLERS.push(EnhanceHandler(Handler));
+            // return _HANDLERS
+            return _HANDLERS;
+        }
+
+        // if handler is array
+        Handler.forEach(handler => {
+            // enhance Handler and push to _HANDLERS
+            _HANDLERS.push(EnhanceHandler(handler));
+        })
+
+        // return _HANDLERS
+        return _HANDLERS;
     }
 
     get Handler() {
@@ -99,7 +130,7 @@ class RouteNode {
     }
 
     get Path() {
-        return '/';
+        return null;
     }
 
     get Type() {
@@ -111,7 +142,7 @@ class RouteNode {
     }
 
     get Base() {
-        return '/';
+        return null;
     }
 
     get StaticPath() {
