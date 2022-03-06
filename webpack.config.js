@@ -18,6 +18,7 @@ module.exports = {
             '@Data': PathResolver('app/Data'),
             '@Modules': PathResolver('app/Modules'),
             '@Routes': PathResolver('app/Routes'),
+            '@Sockets': PathResolver('app/Sockets'),
         },
     },
     target: 'node',
