@@ -14,10 +14,13 @@ InitializeMongoDb();
 
 log("Setting Up Routes");
 
+const InitializeSocketNodes = require("@Modules/InitializeSocketNodes");
+InitializeSocketNodes();
+
 const InitializeRouteNodes = require("@Modules/InitializeRouteNodes.js");
 
 InitializeRouteNodes();
 
-App.listen(Config.App.PORT || 4001, () => {
+Server.listen(Config.App.PORT || 4001, () => {
     log(`Listening on {${Config.App.PORT}}`)
 })
