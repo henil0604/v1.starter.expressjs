@@ -20,7 +20,7 @@
     "@helper-modules/log": "^1.0.0",
     "@helper-modules/random": "^1.0.0",
     "@helper-modules/sleep": "^1.0.0",
-    "app-root-path": "^3.0.0",
+    "app-root-path": "^3.1.0",
     "biri": "^0.4.0",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
